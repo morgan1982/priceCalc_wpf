@@ -8,30 +8,64 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="test"
-                 Grid.Column="0"
-                 Height="100"
-                 />
         <On_off:ToggleButton x:Name="LcSwitch" 
                              Height="59"
                              Margin="166,92,27,268" 
                              Width="71" 
                              Loaded="ToggleButton_Loaded_1" 
                              MouseLeftButtonDown="LcSwitch_MouseLeftButtonDown"
-                             Grid.Column="1"/>
+                             Grid.Column="1" Cursor="Hand"/>
         <On_off:ToggleButton  x:Name="testToggle"
                               Height="71" 
                               Width="68" 
                               Loaded="ToggleButton_Loaded" 
                               Margin="166,21,30,327"
-                              Grid.Column="1" MouseLeftButtonDown="TestToggle_MouseLeftButtonDown"/>
+                              Grid.Column="1" MouseLeftButtonDown="TestToggle_MouseLeftButtonDown" Cursor="Hand"/>
         <Ellipse x:Name="Balloon"
                  Fill="#FF9C9C9C"
                  HorizontalAlignment="Left"
                  Height="102"
-                 Margin="398,295,0,0"
+                 Margin="135,272,0,0"
                  VerticalAlignment="Top"
-                 Width="109"/>
+                 Width="109" Grid.Column="1"/>
+        <DockPanel VerticalAlignment="Top"
+                   Margin="21,21,221,0" Height="76">
+            <Slider HorizontalAlignment="Left"
+                Name="DiscountSlider"
+                Maximum="50"
+                TickFrequency="5"
+                TickPlacement="BottomRight"
+                IsSnapToTickEnabled="True"
+                Margin="25,36,0,0"
+                VerticalAlignment="Top"
+                Width="166" Cursor="Hand"/>
+            <TextBox Text="{Binding ElementName=DiscountSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}"
+                     DockPanel.Dock="Right"
+                     TextAlignment="Right"
+                     Width="72" Height="40"/>
+        </DockPanel>
+        <CheckBox Content="CheckBox" Grid.Column="1" HorizontalAlignment="Left" Margin="154,160,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+        <Label Content="Total" HorizontalAlignment="Left" Margin="367,29,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF32AAE2" FontSize="18"/>
+        <TextBlock x:Name="TotalTextBlock" HorizontalAlignment="Left" Margin="424,37,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="26" FontWeight="Bold" Width="54" RenderTransformOrigin="0.412,0.846" FontSize="16"/>
+        <Grid Margin="34,117,170,69">
+            <StackPanel Grid.Column="0">
+                <Label Content="First Repair" FontWeight="Bold"/>
+                <Label Content="Second Repair" FontWeight="Bold"/>
+                <Label Content="Third Repair" FontWeight="Bold"/>
+                <Label Content="Forth Repair" FontWeight="Bold"/>
+                <Label Content="Fifth Repair" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBox x:Name="RepairOneTextBox"
+                         FontSize="16"
+                         FontWeight="Bold"
+                         Padding="2" TextChanged="RepairOneTextBox_TextChanged"/>
+            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+        </Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>

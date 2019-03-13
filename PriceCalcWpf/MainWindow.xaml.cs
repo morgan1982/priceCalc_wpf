@@ -55,12 +55,22 @@ namespace PriceCalcWpf
         {
             if(testToggle.IsToggled)
             {
-                test.Text = "einai poystis?";
+                TotalTextBlock.Text = "einai?";
             }
             else
             {
-                test.Text = "den einai poystis";
+                TotalTextBlock.Text = "den einai";
             }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            TotalTextBlock.Text += ((CheckBox)sender).Content;
+        }
+
+        private void RepairOneTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TotalTextBlock.Text = ((TextBox)sender).Text;
         }
     }
 }
